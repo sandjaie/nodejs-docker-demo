@@ -1,4 +1,4 @@
-def jobName = 'nodejs_docker_pipeline'
+def jobName = 'nodejs_pipeline'
 def repo = 'https://github.com/sandjaie/nodejs-docker-demo.git'
 
 pipelineJob("${jobName}") {
@@ -15,7 +15,7 @@ pipelineJob("${jobName}") {
                     }
                 }
             }
-        scriptPath('jenkins-pipeline/Jenkinsfile.v2')
+        scriptPath('jenkins-pipeline/Jenkinsfile')
     }
     triggers {
         scm('H/5 * * * *')
