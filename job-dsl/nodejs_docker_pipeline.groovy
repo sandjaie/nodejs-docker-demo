@@ -9,13 +9,15 @@ pipelineJob("${jobName}") {
     cpsScm {
         scm {
             git {
-                remote { url(repo) }
+                remote { 
+                    url("${repo}") 
+                }
                 branches('master')
-                scriptPath('jenkins-pipeline/Jenkinsfile')
                 extensions { 
                     //required as otherwise it may try to tag the repo, which you may not want
                 }
             }
         }
+        scriptPath('jenkins-pipeline/Jenkinsfile')
     }
 }
