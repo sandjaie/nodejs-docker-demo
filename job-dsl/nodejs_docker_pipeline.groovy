@@ -2,12 +2,10 @@ def jobName = 'nodejs-docker-pipeline'
 def repo = 'https://github.com/sandjaie/nodejs-docker-demo.git'
 
 pipelineJob("${jobName}") {
-    triggers {
-        scm('H/5 * * * *')
-    }
-    
-    description("Pipeline for $repo")
-
+    // triggers {
+    //     scm('H/5 * * * *')
+    // }
+    // description("Pipeline for $repo")
     cpsScm {
         scm {
             git {
