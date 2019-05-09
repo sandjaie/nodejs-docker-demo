@@ -3,7 +3,7 @@ def jobName = "${project}"
 
 job(jobName) {
     scm {
-        git('git://github.com/sandjaie/${project}.git') {  node -> // is hudson.plugins.git.GitSCM
+        git("git://github.com/sandjaie/${project}.git") {  node -> // is hudson.plugins.git.GitSCM
             node / gitConfigName('sandjaie')
             node / gitConfigEmail('sandjaie@gmail.com')
         }
@@ -16,6 +16,6 @@ job(jobName) {
                          // Manage Jenkins -> Configure Tools -> NodeJS Installations -> Name
     }
     steps {
-        shell("npm test")
+        shell("npm install")
     }
 }
