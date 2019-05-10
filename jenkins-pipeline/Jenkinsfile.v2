@@ -1,6 +1,7 @@
 def registryName = 'sandjaie/nodejs-docker-example'
 
 node {
+  try {
    def commit_id
    stage('Preparation') {
      checkout scm
@@ -30,4 +31,11 @@ node {
        def app = docker.build("${registryName}:${commit_id}", '.').push()
      }
    }
+  }
+  catch(e) {
+  currentBuild.result = "FAILURE";
+  //send salck notification
+  slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+  throw e;
+  }
 }
