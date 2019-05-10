@@ -1,4 +1,5 @@
 def repo = 'https://github.com/sandjaie/nodejs-docker-demo.git'
+def registryName = 'sandjaie/nodejs-docker-example'
 
 node {
     try {
