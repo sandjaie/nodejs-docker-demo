@@ -15,7 +15,7 @@ pipelineJob("${jobName}") {
                     }
                 }
             }
-        scriptPath('jenkins-pipeline/Jenkinsfile')
+        scriptPath('jenkins-pipeline/Jenkinsfile.v3')
     }
     triggers {
         scm('H/5 * * * *')
