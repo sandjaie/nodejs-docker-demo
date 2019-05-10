@@ -3,7 +3,7 @@ def repo = 'https://github.com/sandjaie/nodejs-docker-demo.git'
 node {
     try {
         stage('Preparation') {
-            gitCheckOut('branch', "${repo}")
+            gitCheckOut()
         }
         stage('Test') {
             nodeTestContainer()
@@ -20,13 +20,11 @@ node {
     }
 }
 
-def gitCheckOut(String branch, String vcsUrl) {
-    branch =  branch ?: 'master'
-    // checkout
-    git branch: "${branch}", url: "${vcsUrl}"
+def gitCheckOut() {
+    checkout scm
     // get last tag
-    sh "git describe --abbrev=0 --tags > .git/tagName"
-    tagName = readFile('.git/tagName')
+    sh "git rev-parse --short HEAD > .git/commit-id"
+    tagName = readFile('.git/tagName').trim()
     echo "${tagName}"
     // set DisplayName
     currentBuild.displayName = tagName
