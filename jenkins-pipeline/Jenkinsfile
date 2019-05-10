@@ -1,7 +1,9 @@
+def repo = 'https://github.com/sandjaie/nodejs-docker-demo.git'
+
 node {
     try {
         stage('Preparation') {
-            gitCheckOut('branch', 'repo URL')
+            gitCheckOut('branch', "${repo}")
         }
         stage('Test') {
             nodeTestContainer()
@@ -13,8 +15,8 @@ node {
         }
     } catch (e) {
         currentBuild.result = "FAILED"
-        throw e
         slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        throw e
     }
 }
 
