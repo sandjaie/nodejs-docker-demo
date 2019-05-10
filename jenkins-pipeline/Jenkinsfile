@@ -1,7 +1,7 @@
 node {
     try {
         stage('Preparation') {
-            gitcheckOut('branch', 'repo URL')
+            gitCheckOut('branch', 'repo URL')
         }
         stage('Test') {
             nodeTestContainer()
@@ -18,7 +18,7 @@ node {
     }
 }
 
-def gitCheckThatOut(String branch, String vcsUrl) {
+def gitCheckOut(String branch, String vcsUrl) {
     branch =  branch ?: 'master'
     // checkout
     git branch: "${branch}", url: "${vcsUrl}"
