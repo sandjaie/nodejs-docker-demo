@@ -24,10 +24,10 @@ def gitCheckOut() {
     checkout scm
     // get last tag
     sh "git rev-parse --short HEAD > .git/commit-id"
-    tagName = readFile('.git/tagName').trim()
-    echo "${tagName}"
+    commit_id = readFile('.git/commit-id').trim()
+    echo "${commit_id}"
     // set DisplayName
-    currentBuild.displayName = tagName
+    currentBuild.displayName = commit_id
 }
 
 def nodeTestContainer() {
