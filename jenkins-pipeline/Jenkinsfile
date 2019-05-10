@@ -28,7 +28,7 @@ def gitCheckOut() {
     commit_id = readFile('.git/commit-id').trim()
     echo "${commit_id}"
     // set DisplayName
-    currentBuild.displayName = commit_id
+    // currentBuild.displayName = commit_id
 }
 
 def nodeTestContainer() {
